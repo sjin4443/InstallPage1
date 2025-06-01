@@ -3,7 +3,7 @@ let originalBodyHTML = document.body.innerHTML;
 const pageHistory = [];
 let currentTOCType = 'eyes';
 let searchContainer;
-let deferredPrompt = null;
+deferredPrompt = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {
   console.log('beforeinstallprompt event fired');
