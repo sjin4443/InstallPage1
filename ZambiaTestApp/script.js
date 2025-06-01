@@ -1439,36 +1439,32 @@ if ('serviceWorker' in navigator) {
 // ---- INSTALL PROMPT HANDLER ----
 // === Install Prompt Handling (added for mobile support) ===
 let deferredPrompt = null;
-const installPopup = document.getElementById('installPopup');
-const installConfirmBtn = document.getElementById('installConfirmBtn');
-const installDismissBtn = document.getElementById('installDismissBtn');
 
-window.addEventListener('beforeinstallprompt', e => {
+// Listen for install prompt event
+window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  installPopup.style.display = 'block';
+  document.getElementById('installBtn').style.display = 'block';
 });
 
-installConfirmBtn.addEventListener('click', async () => {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  const { outcome } = await deferredPrompt.userChoice;
-  if (outcome === 'accepted') {
-    console.log('User accepted the install prompt');
-  } else {
-    console.log('User dismissed the install prompt');
+// Install button click handler
+document.getElementById('installBtn').addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      console.log('User accepted install');
+    } else {
+      console.log('User dismissed install');
+    }
+    deferredPrompt = null;
   }
-  deferredPrompt = null;
-  installPopup.style.display = 'none';
 });
 
-installDismissBtn.addEventListener('click', () => {
-  installPopup.style.display = 'none';
+// Allow skipping install
+document.getElementById('skipInstallBtn').addEventListener('click', () => {
+  showPage('splashScreen');
 });
 
-// Optional iOS fallback:
-if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
-  installPopup.style.display = 'block';
-}
 
 
