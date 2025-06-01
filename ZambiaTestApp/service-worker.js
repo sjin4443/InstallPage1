@@ -13,7 +13,7 @@
  * first load.
  */
 
-const CACHE_NAME = 'arclight-static-v4';
+const CACHE_NAME = 'arclight-static-v5';
 
 // List of files to precache.
 // Keep them **relative** so the PWA can be hosted from *any* folder or origin.
@@ -134,28 +134,37 @@ self.addEventListener('fetch', event => {
   const { request } = event;
 
   // Navigations (HTML pages)
-  if (request.mode === 'navigate') {
-    event.respondWith(
-      fetch(request)
-        .then(response => {
-          // Stash a copy so it works offline next time
-          const copy = response.clone(); caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
-          return response;
-        })
-        .catch(() => caches.match('./index.html')) // offline fallback
-    );
-    return;
-  }
+ if (request.mode === 'navigate') {
+  event.respondWith(
+    fetch(request)
+      .then(response => {
+        // clone **once**, then stash a copy in the cache
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+        return response;               // send original response to the page
+      })
+      .catch(() => caches.match('./index.html')) // offline fallback
+  );
+  return; // bail – we handled this request
+}
 
   // Static assets – cache‑first
-  event.respondWith(
-    caches.match(request).then(cached => {
-      if (cached) return cached;
-      return fetch(request).then(networkResp => {
-        // Save a copy for future / offline use
-        const copy = networkResp.clone(); caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
-        return networkResp;
-      });
-    })
-  );
+  // FETCH – cache-first for static assets
+event.respondWith(
+  caches.match(request).then(cached => {
+    // ➊  Serve from cache if we already have it
+    if (cached) return cached;
+
+    // ➋  Otherwise fetch from network
+    return fetch(request).then(networkResp => {
+      // clone ONCE, then save the copy
+      const copy = networkResp.clone();
+      caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+
+      // ➌  Return the original response to the page
+      return networkResp;
+    });
+  })
+);
+
 });
