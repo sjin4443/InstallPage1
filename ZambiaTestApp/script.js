@@ -1,8 +1,45 @@
 // Save original body HTML to restore later
 let originalBodyHTML = document.body.innerHTML;
 const pageHistory = [];
-let currentTOCType = 'eyes'; // <-- add this global
-let searchContainer; 
+let currentTOCType = 'eyes';
+let searchContainer;
+let deferredPrompt = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const installBtn = document.getElementById('installBtn');
+  const skipBtn = document.getElementById('skipInstallBtn');
+
+  showPage('installPage');   // 항상 설치 페이지 먼저
+
+  // Install 버튼 항상 표시
+  installBtn.style.display = 'block';
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('beforeinstallprompt event fired');
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) {
+      alert("Your browser doesn't currently support direct installation.");
+      return;
+    }
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`Install prompt outcome: ${outcome}`);
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+    showPage('splashScreen');  // 설치 끝나면 스플래쉬로 이동
+  });
+
+  skipBtn.addEventListener('click', () => {
+    showPage('splashScreen');  // Skip도 스플래쉬로 이동
+  });
+});
+
+
+
 
 // Onboarding
 function completeOnboarding() {
