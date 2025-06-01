@@ -651,7 +651,7 @@ function showTOC(type = 'eyes') {
 
   // possible topics for each module
   const eyes = [
-    'Anatomy','Arclight','Case Study','Child','Front of Eye',
+    'Anatomy','Arclight','Front of Eye Case Test','Child','Front of Eye',
     'Fundal Reflex','Fundus','Glaucoma','How to Check for Eyeglasses',
     'How to Use','Lens','Pupil','Red Eye','Summary','Vision Loss'
   ];
@@ -682,7 +682,7 @@ const imageMap = {
   'Eyes: Anatomy': 'Anatomy1.png',  // will handle multi-image switching later
   'Ears: Anatomy': 'EarAnatomy.png',
   'Arclight': 'Arclight.png',
-  'Case Study': 'CaseStudy.png',
+  'Front of Eye Case Test': 'CaseStudy.png',
   'Child': 'Child.png',
   'Front of Eye': 'FrontOfEye.png',
   'Fundal Reflex': 'FundalReflex.png',
@@ -715,7 +715,7 @@ function setupTOCImageSwitch() {
   // Multi-image items map
   const multiImageMap = {
     'Anatomy': ['Anatomy1.png', 'Anatomy2.png'],
-    'Case Study': ['CaseStudy1.png', 'CaseStudy2.png']
+    'Front of Eye Case Test': ['CaseStudy1.png', 'CaseStudy2.png']
   };
 
   document.getElementById('tocList').addEventListener('click', function (e) {
@@ -764,9 +764,9 @@ function setupTOCImageSwitch() {
       const filenameMap = {
       "Anatomy": "Anatomy1.png",
       "Arclight": "Arclight.png",
-      "Case Study": "CaseStudy.png",
       "Child": "Child.png",
       "Front of Eye": "FrontOfEye.png",
+      "Front of Eye Case Test": "CaseStudy.png",
       "Fundal Reflex": "FundalReflex.png",
       "Fundus": "Fundus.png",
       "Glaucoma": "Glaucoma.png",
@@ -1416,28 +1416,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-//service worker
+//service worker – always register so it also works from file:// or plain HTTP
 if ('serviceWorker' in navigator) {
-  // Check protocol before attempting to register service worker
-  if (location.protocol === 'https:' || location.hostname === 'localhost') {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(reg => {
-          console.log('Service Worker registered successfully.', reg);
-        })
-        .catch(err => {
-          console.error('Service worker registration failed: ', err);
-        });
-    });
-  } else {
-    console.log('Service worker not registered because not running on https or localhost.');
-  }
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('SW registered', reg))
+      .catch(console.error);
+  });
 }
 
 
 
 // ---- INSTALL PROMPT HANDLER ----
 // === Install Prompt Handling (added for mobile support) ===
+/* === INSTALL-PAGE LOGIC =============================================== */
 let deferredPrompt;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1469,18 +1461,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // ➌  “Skip and continue” button
   skipBtn.addEventListener('click', () => showPage('splashScreen'));
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
