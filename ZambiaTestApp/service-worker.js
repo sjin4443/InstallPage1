@@ -77,20 +77,20 @@ const ASSETS = [
   /* -------------------------------------------------------------------- */
   /* === Anterior Segment Quiz assets (used by Front‑of‑Eye Quiz) ======== */
   /* Add every image / video that lives in the Anterior Segment Quiz folder*/
-  './Anterior Segment Quiz/html/index.html',
+  './AnteriorSegmentQuiz/html/index.html',
   // ----- IMAGES ---------------------------------------------------------
-  './Anterior Segment Quiz/html/images/case1_eye.png',
-  './Anterior Segment Quiz/html/images/case2_eye.png',
-  './Anterior Segment Quiz/html/images/case3_eye.png',
-  './Anterior Segment Quiz/html/images/case4_eye.png',
-  './Anterior Segment Quiz/html/images/case5_eye.png',
-  './Anterior Segment Quiz/html/images/case6_eye.png',
-  './Anterior Segment Quiz/html/images/case7_eye.png',
-  './Anterior Segment Quiz/html/images/case8_eye.png',
-  './Anterior Segment Quiz/html/images/case9_eye.png',
-  './Anterior Segment Quiz/html/images/case10_eye.png',
-  './Anterior Segment Quiz/html/images/case11_eye.png',
-  './Anterior Segment Quiz/html/images/case12_eye.png',
+  './AnteriorSegmentQuiz/html/images/case1_eye.png',
+  './AnteriorSegmentQuiz/html/images/case2_eye.png',
+  './AnteriorSegmentQuiz/html/images/case3_eye.png',
+  './AnteriorSegmentQuiz/html/images/case4_eye.png',
+  './AnteriorSegmentQuiz/html/images/case5_eye.png',
+  './AnteriorSegmentQuiz/html/images/case6_eye.png',
+  './AnteriorSegmentQuiz/html/images/case7_eye.png',
+  './AnteriorSegmentQuiz/html/images/case8_eye.png',
+  './AnteriorSegmentQuiz/html/images/case9_eye.png',
+  './AnteriorSegmentQuiz/html/images/case10_eye.png',
+  './AnteriorSegmentQuiz/html/images/case11_eye.png',
+  './AnteriorSegmentQuiz/html/images/case12_eye.png',
 
 // ---------------------------------------------------------------------------
 
