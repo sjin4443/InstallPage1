@@ -5,6 +5,16 @@ let currentTOCType = 'eyes';
 let searchContainer;
 let deferredPrompt = null;
 
+window.addEventListener('beforeinstallprompt', (e) => {
+  console.log('beforeinstallprompt event fired');
+  deferredPrompt = e;
+  // Trigger the default mini-infobar prompt
+  // Do NOT call e.preventDefault();
+});
+
+
+/*let deferredPrompt = null;
+
 document.addEventListener('DOMContentLoaded', () => {
   const installBtn = document.getElementById('installBtn');
   const skipBtn = document.getElementById('skipInstallBtn');
@@ -36,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   skipBtn.addEventListener('click', () => {
     showPage('splashScreen');  // Skip도 스플래쉬로 이동
   });
-});
+});*/
 
 
 
