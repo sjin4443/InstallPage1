@@ -1440,31 +1440,47 @@ if ('serviceWorker' in navigator) {
 // === Install Prompt Handling (added for mobile support) ===
 let deferredPrompt = null;
 
-// Listen for install prompt event
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  document.getElementById('installBtn').style.display = 'block';
-});
-
-// Install button click handler
-document.getElementById('installBtn').addEventListener('click', async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      console.log('User accepted install');
-    } else {
-      console.log('User dismissed install');
-    }
-    deferredPrompt = null;
+  const installBtn = document.getElementById('installBtn');
+  if (installBtn) {
+    installBtn.style.display = 'block';
   }
 });
 
-// Allow skipping install
-document.getElementById('skipInstallBtn').addEventListener('click', () => {
-  showPage('splashScreen');
-});
+const installBtn = document.getElementById('installBtn');
+if (installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        console.log('User accepted install');
+      } else {
+        console.log('User dismissed install');
+      }
+      deferredPrompt = null;
+    }
+  });
+}
+
+const skipBtn = document.getElementById('skipInstallBtn');
+if (skipBtn) {
+  skipBtn.addEventListener('click', () => {
+    showPage('splashScreen');
+  });
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
