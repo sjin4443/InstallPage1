@@ -829,3 +829,12 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+/* Add to style.css or responsive.css */
+#installPage .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
