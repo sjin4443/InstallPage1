@@ -105,7 +105,7 @@ self.addEventListener('install', event => {
           fetch(url)
             .then(response => {
               if (response.ok) {
-                return cache.put(url, response.clone());
+                return cache.put(url, response);
               } else {
                 console.warn(`Skipping ${url}: HTTP ${response.status}`);
               }
@@ -139,7 +139,7 @@ self.addEventListener('fetch', event => {
       fetch(request)
         .then(response => {
           // Stash a copy so it works offline next time
-          caches.open(CACHE_NAME).then(cache => cache.put(request, response.clone()));
+          const copy = response.clone(); caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
           return response;
         })
         .catch(() => caches.match('./index.html')) // offline fallback
@@ -153,7 +153,7 @@ self.addEventListener('fetch', event => {
       if (cached) return cached;
       return fetch(request).then(networkResp => {
         // Save a copy for future / offline use
-        caches.open(CACHE_NAME).then(cache => cache.put(request, networkResp.clone()));
+        const copy = networkResp.clone(); caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
         return networkResp;
       });
     })
