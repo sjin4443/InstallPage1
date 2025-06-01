@@ -17,6 +17,8 @@ function completeOnboarding() {
     return;
   }
 
+  if (typeof originalBodyHTML === 'undefined') { var originalBodyHTML = document.body.innerHTML; }
+
   alert("Welcome! You're now registered to Arclight Eye and Ear Care App!");
   showPage('selectModule');
 }
@@ -1334,15 +1336,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-searchContainer = document.getElementById('fixedSearchContainer');
-if (searchContainer) {
-  searchContainer.style.display = pageId === 'dashboard' ? 'block' : 'none';
-}
 
-
-if (searchContainer) {
-  searchContainer.style.display = pageId === 'dashboard' ? 'block' : 'none';
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   const atomsImg = document.querySelector('#atomsImageContainer img');
