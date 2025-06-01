@@ -1438,39 +1438,39 @@ if ('serviceWorker' in navigator) {
 
 // ---- INSTALL PROMPT HANDLER ----
 // === Install Prompt Handling (added for mobile support) ===
-let deferredPrompt = null;
+let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  const installBtn = document.getElementById('installBtn');
-  if (installBtn) {
-    installBtn.style.display = 'block';
-  }
-});
+document.addEventListener('DOMContentLoaded', () => {
+  const installBtn = document.getElementById('installBtn');        // from Install page
+  const skipBtn    = document.getElementById('skipInstallBtn');    // from Install page
 
-const installBtn = document.getElementById('installBtn');
-if (installBtn) {
-  installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        console.log('User accepted install');
-      } else {
-        console.log('User dismissed install');
-      }
-      deferredPrompt = null;
-    }
+  // ➊  Capture the event and reveal the button
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();                 // stop the auto-banner
+    deferredPrompt = e;                 // save the event
+    installBtn.style.display = 'block'; // show the “Install App” button
   });
-}
 
-const skipBtn = document.getElementById('skipInstallBtn');
-if (skipBtn) {
-  skipBtn.addEventListener('click', () => {
+  // ➋  When user taps “Install App”
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;        // safety check
+
+    deferredPrompt.prompt();            // 🔑 trigger native banner
+    const { outcome } = await deferredPrompt.userChoice;
+
+    console.log(`Install prompt outcome: ${outcome}`);
+    deferredPrompt = null;              // clear it so it can’t be reused
+    installBtn.style.display = 'none';  // hide button
+
+    // Optional: move on to the splash screen after install / dismissal
     showPage('splashScreen');
   });
-}
+
+  // ➌  “Skip and continue” button
+  skipBtn.addEventListener('click', () => showPage('splashScreen'));
+});
+
+
 
 
 
