@@ -63,7 +63,6 @@ const ASSETS = [
   './videos/Pupil/RAPDTest.mp4',
   './videos/Pupil/PupilExam.mp4',
   './videos/Pupil/PupilExamPEC.mp4',
-  './videos/Pupil/PupilMontage.mp4',
   './videos/Pupil/PupilPathways.mp4',
 
   /* Videos – Childhood eye‑screening (USAID) */
