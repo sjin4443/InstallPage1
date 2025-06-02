@@ -285,6 +285,8 @@
 
     <button onclick="showCoreClinicalOphthalmicExamination()">Core Clinical Ophthalmic Examination</button>
     <button onclick="showDiseases()">Diseases</button>
+    <button onclick="showArclight()">Arclight</button>
+
 
   </div>
 </div>
@@ -307,13 +309,13 @@
     </div>
 
     <!-- Visual Acuity -->
-    <div class="module-card" style="background-color: #777; color: white;">
+    <div class="module-card" id="visualacuityCard" style="cursor:pointer;">
       <img src="images/icons_pic/VisualAcuity.png" alt="Visual Acuity Icon" style="width: 80px; height: 80px; object-fit: contain; border-radius: 8px; margin-right: 12px;" />
       <div class="module-info">
         <h3>Visual Acuity</h3>
-        <p style="color: white;">To be added</p>
+        <p>Video Learning</p>
         <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
-        <span class="status" style="color: white;">Coming Soon</span>
+        <span class="status">Start!</span>
       </div>
     </div>
 
@@ -364,6 +366,30 @@
 
   </div>
 </div>
+
+
+
+
+<!-- Visual Acuity Page -->
+<div id="visualAcuityPage" class="page">
+  <div class="container">
+    <div class="header">
+      <button onclick="showPage('coreClinicalOphthalmicExamination')">←</button>
+      <h3>Visual Acuity</h3>
+    </div>
+    <div class="video-container">
+      <video id="visualAcuityVideo" controls style="width: 100%; max-width: 100%;">
+        <source src="videos/VisualAcuity.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
 <!-- Front of Eye Page -->
 <div id="frontOfEyePage" class="page">
@@ -434,13 +460,6 @@
       <div class="module-info">
         <h3>RAPD Test</h3>
         <p>Video | App</p>
-      </div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-info">
-        <h3>Pupil Montage</h3>
-        <p>Video</p>
       </div>
     </div>
 
@@ -528,22 +547,6 @@
   </div>
 </div>
 
-
-<!-- Pupil Montage Page -->
-<div id="pupilMontagePage" class="page">
-  <div class="container">
-    <div class="header">
-      <button onclick="showPage('pupilsPage')">←</button>
-      <h3>Pupil Montage</h3>
-    </div>
-    <div class="video-container">
-      <video id="pupilMontageVideo" controls style="width: 100%; max-width: 100%;">
-        <source src="videos/Pupil/PupilMontage.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-</div>
 
 <!-- Pupil Pathways Page -->
 <div id="pupilPathwaysPage" class="page">
@@ -665,6 +668,7 @@
 </div>
 
 
+
 <!-- Childhood Eye Screening Page -->
 <div id="childhoodEyeScreeningPage" class="page">
   <div class="container">
@@ -689,6 +693,17 @@
         <span class="status">Start!</span>
       </div>
     </div>
+
+    <!-- Fundal Reflex -->
+    <div class="module-card" id="fundalreflexFRT" style="cursor:pointer;">
+      <div class="module-info">
+        <h3>Fundal Reflex</h3>
+        <p>Video Content</p>
+        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+        <span class="status">Start!</span>
+      </div>
+    </div>
+
 
     <!-- Normal and Abnormal Findings -->
     <div class="module-card" style="cursor:pointer;">
@@ -735,6 +750,23 @@
   </div>
 </div>
 
+<!-- Fundal Reflex Page -->
+<div id="fundalReflexPage" class="page">
+  <div class="container">
+    <div class="header">
+      <button onclick="showPage('childhoodEyeScreeningPage')">←</button>
+      <h3>Fundal Reflex</h3>
+    </div>
+    <div class="video-container">
+      <video id="fundalReflexVideo" controls style="width: 100%; max-width: 100%;">
+        <source src="videos/USAID/FundalReflexUSAID.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+
+
 <!-- Normal and Abnormal Findings Page -->
 <div id="normalAbnormalPage" class="page">
   <div class="container">
@@ -745,6 +777,72 @@
     <div class="video-container">
       <video id="normalAbnormalVideo" controls style="width: 100%; max-width: 100%;">
         <source src="videos/USAID/NormalAbnormal.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Arclight Page -->
+<div id="arclightPage" class="page">
+  <div class="container">
+    <h1>Arclight</h1>
+
+    <!-- How to Use Arclight Button -->
+   <div class="module-card" id="howToUseArclightArclightCard" style="cursor:pointer;">
+      <div class="module-info">
+        <h3>How to Use Arclight</h3>
+        <p>Video Learning</p>
+        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+        <span class="status">Start!</span>
+      </div>
+    </div>
+
+    <!-- Mobile Phone Attachment Page -->
+    <div class="module-card" id="phoneAttachmentCard" style="cursor:pointer;">
+      <div class="module-info">
+        <h3>Mobile Phone Attachment</h3>
+        <p>Video Learning</p>
+        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+        <span class="status">Start!</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- How to Use Arclight Video Page -->
+<div id="howToUseArclightVideoPage" class="page">
+  <div class="container">
+    <div class="header">
+      <button onclick="showPage('arclightPage')">←</button>
+      <h3>How to Use Arclight</h3>
+    </div>
+    <div class="video-container">
+      <video id="howToUseArclightVideo" controls style="width: 100%; max-width: 100%;">
+        <source src="videos/USAID/HowtoArclight.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Phone Attachment Video Page -->
+<div id="phoneAttachmentVideoPage" class="page">
+  <div class="container">
+    <div class="header">
+      <button onclick="showPage('arclightPage')">←</button>
+      <h3>Mobile Phone Attachment</h3>
+    </div>
+    <div class="video-container">
+      <video id="phoneAttachmentVideo" controls style="width: 100%; max-width: 100%;">
+        <source src="videos/Arclight/PhoneAttach.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
