@@ -45,6 +45,22 @@ function showCoreClinicalOphthalmicExamination() {
   showPage('coreClinicalOphthalmicExamination');
 }
 
+function showArclight() {
+  showPage('arclightPage');
+
+  const howToUseArclightArclightCard = document.getElementById('howToUseArclightArclightCard');
+  if (howToUseArclightArclightCard) {
+    howToUseArclightArclightCard.addEventListener('click', () => showPage('howToUseArclightVideoPage'));
+  }
+
+  const phoneAttachmentCard = document.getElementById('phoneAttachmentCard');
+  if (phoneAttachmentCard) {
+    phoneAttachmentCard.addEventListener('click', () => showPage('phoneAttachmentVideoPage'));
+  }
+}
+
+
+
 function showDiseases() {
   showPage('diseasesPage');
 }
@@ -131,6 +147,19 @@ if (tocToggleBtn) {
   
   
 });
+
+// Visual Acuity click listener
+const visualAcuityCard = document.getElementById('visualacuityCard');
+if (visualAcuityCard) {
+  visualAcuityCard.addEventListener('click', () => showPage('visualAcuityPage'));
+}
+
+// Fundal Reflex click listener
+const fundalReflexCard = document.getElementById('fundalreflexFRT');
+if (fundalReflexCard) {
+  fundalReflexCard.addEventListener('click', () => showPage('fundalReflexPage'));
+}
+
 
 
 
@@ -258,9 +287,7 @@ pupilCards.forEach(card => {
   case 'RAPD Test':
     showPage('rapdPage');
     break;
-  case 'Pupil Montage':
-    showPage('pupilMontagePage');
-    break;
+ 
   case 'Pupil Pathways Explained':
     showPage('pupilPathwaysPage');
     break;
@@ -332,6 +359,7 @@ if (pageId === 'earsDashboard' && earsSwitch) {
   'learningModules',
   'coreClinicalOphthalmicExamination',
   'diseasesPage',
+  'arclightPage',
   'childhoodEyeScreeningPage',
   'howToUseArclightVideoPage',
   'directOphthalmoscopy',
@@ -343,7 +371,6 @@ if (pageId === 'earsDashboard' && earsSwitch) {
   'rapdTestPage',
   'pupilExamPage',
   'pupilExamPECPage',
-  'pupilMontagePage',
   'pupilPathwaysPage',
   'howToArclightPage',
   'assessmentVisionPage',
@@ -358,7 +385,10 @@ if (pageId === 'earsDashboard' && earsSwitch) {
   'pupilFullExamPage',
   'rapdPage',
   'rapdTestVideoPage',
-
+  'howToUseArclightVideoPage',
+  'phoneAttachmentVideoPage',
+  'visualAcuityPage',
+  'fundalReflexPage',
 
 
 ];
@@ -1238,6 +1268,10 @@ if (caseBasedCard) {
   }
 
 
+  const phoneAttachmentCard = document.getElementById('phoneAttachmentCard');
+  if (phoneAttachmentCard) {
+    phoneAttachmentCard.addEventListener('click', () => showPage('phoneAttachmentVideoPage'));
+  }
 
 
   // Back button on iframe quiz page
